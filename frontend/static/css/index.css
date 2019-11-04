@@ -1,0 +1,22 @@
+.main-block {
+	margin: 100px auto 0;
+	width: 600px;
+	height: 300px;
+}
+
+.block {
+	display: inline-block;
+	float: left;
+	width: 298px;
+	height: 200px;
+	border: 1px solid #FFF;
+	text-align: center;
+	text-decoration: none;
+}
+.block:hover {
+	border-color: #000;
+}
+
+.block img {
+	width: 100px;
+}

@@ -1,0 +1,91 @@
+.tasks-list {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 30%;
+	height: 100%;
+	border-right: 1px solid #000;
+}
+.tasks-list h2 {margin: 5px 0; padding: 0 0 5px; border-bottom: 1px solid #000;}
+.tasks-list .item {
+	display: flex;
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	height: 50px;
+	border-bottom: 1px solid #000;
+}
+.tasks-list .item.active {background-color: #ccc;}
+.tasks-list .item .title {position: absolute; top: 8px; left: 10px;}
+.tasks-list .item .start_date {position: absolute; top: 27px; left: 10px;}
+.tasks-list .item .status {position: absolute; top: 7px; right: 35px; padding: 0 3px; background-color: #0FF;}
+.tasks-list .item .type {position: absolute; top: 25px; right: 35px; padding: 0 3px; background-color: #FAF;}
+.tasks-list .item .sum {position: absolute; top: 15px; left: 45%; font-size: 20px;}
+
+
+
+#tasks_diagram {
+	position: absolute;
+	top: 0;
+	left: 30%;
+	width: 40%;
+	height: 100%;
+}
+.baloon {
+	float: left;
+}
+
+.task-info {
+    position: absolute;
+    top: 0;
+    left: 30%;
+    width: 40% !important;
+    height: 100%;
+}
+.task-info > div {position: relative; margin: 20px; padding: 20px; border: 1px solid #444;}
+.task-info .title {font-size: 24px;}
+.task-info .type {position: absolute; right: 20px; padding: 0 3px; background-color: #FAF;}
+.task-info .comment {
+    font-style: italic;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #aaa;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+.task-info .sum {
+    position: absolute;
+    top: 45px;
+    right: 20px;
+    padding: 0 2px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #333;
+    color: #fff;
+}
+.task-info .car {display: block; font-weight: bold;}
+.task-info .car img {display: inline-block; margin-right: 10px; width: 20px; height: 13px;}
+.task-info .emp {display: block; font-weight: bold;}
+.task-info .emp img {display: inline-block; margin-right: 10px; width: 20px; height: 20px;}
+.task-info .start-date{font-size: 13px;}
+.task-info .end-date{font-size: 13px;}
+.task-info .status {position: absolute; right: 20px; bottom: 20px;}
+.task-info .editMode {position: absolute; right: 20px;}
+
+
+.spares-list {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 100%;
+    border-left: 1px solid #000;
+}
+.spares-list h2 {margin: 5px 0; padding: 0 0 5px; border-bottom: 1px solid #000;}
+.spares-list .item {display: block; position: relative; width: 100%; height: 40px; border-bottom: 1px solid #000;}
+.spares-list .item .title {position: absolute; top: 5px; left: 5px; font-weight: bold;}
+.spares-list .item .catNum {position: absolute; top: 20px; left: 5px;}
+.spares-list .item .price {position: absolute; top: 3px; right: 3px; padding: 0 2px; font-size: 16px; font-weight: bold; border: 1px solid #ccc; border-radius: 3px; background-color: #333; color: #fff;}
+.spares-list .item .buy_date {position: absolute; top: 22px; right: 5px; font-size: 13px;}

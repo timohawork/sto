@@ -1,0 +1,132 @@
+.container > div {
+	margin: auto;
+	width: 100%;
+	height: 100vh;
+	position: relative;
+}
+
+.cars-list {
+	overflow-y: scroll;
+	border: 1px solid #000;
+}
+.cars-list h2 {margin: 5px 0; padding: 0 0 5px; border-bottom: 1px solid #000;}
+.cars-list .item {
+	display: flex;
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	height: 50px;
+	border-bottom: 1px solid #000;
+}
+.cars-list .item.active {background-color: #ccc;}
+.cars-list .item .model {position: absolute; top: 3px; left: 10px;}
+.cars-list .item .owner {position: absolute; top: 7px; right: 40px;}
+.cars-list .item .phone {position: absolute; top: 25px; right: 40px;}
+.cars-list .item .number {
+	position: absolute; 
+	top: 21px; 
+	left: 10px;
+	width: 121px;
+	height: 25px;
+	background: url("/static/img/icons/number.png") no-repeat center center;
+	background-size: cover;
+}
+.cars-list .item .number .code {position: absolute; top: 2px; left: 15px; font-size: 20px;}
+.cars-list .item .number .region {position: absolute; top: 2px; right: 8px; font-size: 14px;}
+
+
+.horizontal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.car-info {position: relative;}
+.car-info .left {float: left; width: 60%; text-align: center;}
+.car-info .right {float: left; width: 40%;}
+.car-info .right > div {padding: 10px; text-align: center;}
+.car-info .number {
+	position: relative;
+	margin: 0 auto;
+	width: 242px;
+	height: 50px;
+	background: url("/static/img/icons/number.png") no-repeat center center;
+	background-size: cover;
+}
+.car-info .number .code {position: absolute; top: 5px; left: 33px; font-size: 35px;}
+.car-info .number .region {position: absolute; top: 5px; right: 23px; font-size: 25px;}
+.car-info .year {font-size: 20px; font-weight: bold;}
+.car-info .vin {margin-bottom: 20px;}
+.car-info .owner {}
+.car-info .phone {}
+
+.car-info .editMode {
+	display: block;
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+}
+
+.car-info .editForm {
+	text-align: center;
+}
+
+
+.emp-list {
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	border-top: 1px solid #000;
+}
+
+.emp-list ul {
+	padding: 0 20px;
+	list-style-type: none;
+}
+.emp-list li img {
+	display: inline-block;
+	margin-right: 20px;
+	width: 20px;
+	height: 20px;
+}
+.emp-list li .name {
+	display: inline-block;
+	margin-right: 10px;
+	font-weight: bold;
+}
+.emp-list li .total {
+	display: inline-block;
+}
+
+
+
+.tasks-list {
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	border-left: 1px solid #000;
+	border-top: 1px solid #000;
+}
+.tasks-list .item {position: relative; display: block; width: 100%; height: 20px;}
+.tasks-list .item .icon {
+	position: absolute; 
+	top: 5px; 
+	left: 10px; 
+	width: 20px; 
+	height: 20px; 
+	background: url("/static/img/icons/check.png") no-repeat center center; 
+	background-size: cover;
+}
+.tasks-list .item .title {position: absolute; top: 5px; left: 40px;}
+.tasks-list .item .sum {position: absolute; top: 5px; right: 10px; padding: 0 2px; font-size: 16px; font-weight: bold; border: 1px solid #ccc; border-radius: 3px; background-color: #333; color: #fff;}
+
+
+
+
+.car-spares-list {border: 1px solid #000;}
+.car-spares-list h2 {margin: 5px 0; padding: 0 0 5px; border-bottom: 1px solid #000;}
+.car-spares-list .item {display: block; position: relative; width: 100%; height: 40px; border-bottom: 1px solid #000;}
+.car-spares-list .item .title {position: absolute; top: 5px; left: 5px; font-weight: bold;}
+.car-spares-list .item .catNum {position: absolute; top: 20px; left: 5px;}
+.car-spares-list .item .price {position: absolute; top: 3px; right: 3px; padding: 0 2px; font-size: 16px; font-weight: bold; border: 1px solid #ccc; border-radius: 3px; background-color: #333; color: #fff;}
+.car-spares-list .item .buy_date {position: absolute; top: 22px; right: 5px; font-size: 13px;}

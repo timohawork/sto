@@ -1,0 +1,84 @@
+.container > div {
+	margin: auto;
+	height: 100vh;
+	position: relative;
+}
+
+.spares-list {
+	width: 30%;
+	overflow-y: scroll;
+	border: 1px solid #000;
+}
+.spares-list h2 {margin: 5px 0; padding: 0 0 5px; border-bottom: 1px solid #000;}
+.spares-list .spare-car-block {
+	/*display: flex;*/
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	border-bottom: 1px solid #000;
+}
+.spares-list .car {width: 100%; height: 50px;}
+.spares-list .car.active {background-color: #ccc;}
+.spares-list .car .model {position: absolute; top: 3px; left: 10px;}
+.spares-list .car .owner {position: absolute; top: 7px; right: 45px;}
+.spares-list .car .phone {position: absolute; top: 25px; right: 45px;}
+.spares-list .car .number {
+	position: absolute; 
+	top: 21px; 
+	left: 10px;
+	width: 121px;
+	height: 25px;
+	background: url("/static/img/icons/number.png") no-repeat center center;
+	background-size: cover;
+}
+.spares-list .car .number .code {position: absolute; top: 2px; left: 15px; font-size: 20px;}
+.spares-list .car .number .region {position: absolute; top: 2px; right: 8px; font-size: 14px;}
+.spares-list .car .arrow {position: absolute; top: 14px; right: 8px; width: 25px; height: 25px; cursor: pointer;}
+.spares-list .car .arrow.hidden {opacity: .3; cursor: default;}
+.spares-list .car .arrow.down {transform: rotate(-90deg);}
+
+.spares-list .spares {}
+.spares-list .item {display: block; position: relative; width: 100%; height: 40px; border-top: 1px solid #000;}
+.spares-list .item.active {background-color: #ccc;}
+.spares-list .item .title {position: absolute; top: 5px; left: 5px; font-weight: bold;}
+.spares-list .item .catNum {position: absolute; top: 20px; left: 5px;}
+.spares-list .item .price {position: absolute; top: 3px; right: 37px; padding: 0 2px; font-size: 16px; font-weight: bold; border: 1px solid #ccc; border-radius: 3px; background-color: #333; color: #fff;}
+.spares-list .item .buy_date {position: absolute; top: 22px; right: 37px; font-size: 13px;}
+.spares-list .item .del {top: 4px;}
+
+.middle-block {
+	width: 70%;
+}
+
+
+.horizontal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.spare-info {position: relative;}
+.spare-info .catNum {font-size: 22px; font-weight: bold; text-align: center;}
+.spare-info .price {
+	margin: 0 auto; 
+	width: 100px;
+	padding: 2px 5px;
+	font-size: 20px;
+	font-weight: bold;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+}
+
+.spare-info .editMode {
+	display: block;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+.spare-info .editForm {
+	text-align: center;
+}
