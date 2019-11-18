@@ -1,37 +1,49 @@
 const request = require('../request');
-const model = require('../models/car');
+const model = require('../helpers').model;
 
-module.exports = app => {
+module.exports = (app, sequelize) => {
     request(app, '/cars/add', (req, res, user) => {
-    	const data = req.body;
-    	const car = model();
-        console.log('ADD car:', data);
+    	console.log('ADD car:', req.body);
 
-    	car.add(data, errors => {
-            if (errors !== false) return res.status(404).json({errors: errors});
-        	return res.json({res: true});
-        });
+        model.add(
+            sequelize.models.cars, 
+            req.body, 
+            newItem => {
+                res.json({res: true, data: newItem});
+            },
+            errors => {
+                res.status(404).json({errors: errors});
+            }
+        );
     });
 
     request(app, '/cars/edit', (req, res, user) => {
-        const data = req.body;
-        const car = model();
-        console.log('EDIT car:', data);
+        console.log('EDIT car:', req.body);
 
-        car.edit(data, errors => {
-            if (errors !== false) return res.status(404).json({errors: errors});
-            return res.json({res: true});
-        });
+        model.edit(
+            sequelize.models.cars, 
+            req.body, 
+            updatedItem => {
+                res.json({res: true, data: updatedItem});
+            },
+            errors => {
+                res.status(404).json({errors: errors});
+            }
+        );
     });
 
     request(app, '/cars/del', (req, res, user) => {
-        const data = req.body;
-        const car = model();
-        console.log('DEL car:', data);
+        console.log('DEL car:', req.body);
 
-        car.del(data.vin, error => {
-            if (error) return res.status(404).json({error: error});
-            return res.json({res: true});
-        });
+        model.del(
+            sequelize.models.cars, 
+            req.body, 
+            () => {
+                res.json({res: true});
+            },
+            errors => {
+                res.status(404).json({errors: errors});
+            }
+        );
     });
 };

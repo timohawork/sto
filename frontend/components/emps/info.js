@@ -8,6 +8,7 @@ class EmpInfo extends Component {
 
 		this.state = {
 			data: {
+				id: '',
 				login: '',
 				name: '',
 				password: '',

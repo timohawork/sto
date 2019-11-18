@@ -27,9 +27,9 @@ class CarsList extends Component {
 				<h2>Автомобили</h2>
 				{this.props.list ? Object.keys(this.props.list).map((id, index) => (
 					<CarBlock 
-						key={this.props.list[id].vin} 
+						key={this.props.list[id].id} 
 						data={this.props.list[id]} 
-						isActive={this.props.activeItem &&this.props.activeItem.vin == this.props.list[id].vin} 
+						isActive={this.props.activeItem &&this.props.activeItem.id == this.props.list[id].id} 
 						setActiveCar={this.props.setActiveCar} 
 						delCar={this.props.delCar}
 					/>

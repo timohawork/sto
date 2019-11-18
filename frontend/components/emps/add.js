@@ -7,6 +7,7 @@ class EmpAddForm extends Component {
 		super();
 		this.state = {
 			data: {
+				id: '',
 				login: '',
 				name: '',
 				password: '',
@@ -47,9 +48,9 @@ class EmpAddForm extends Component {
 			  			<InputBlock name="name" title="Имя" error={this.state.errors.name}>
 			  				<input type="text" name="name" onChange={this.handleChange} />
 			  			</InputBlock>
-			  			<InputBlock name="password" title="Пароль" error={this.state.errors.password}>
+			  			{/*<InputBlock name="password" title="Пароль" error={this.state.errors.password}>
 			  				<input type="text" name="password" onChange={this.handleChange} />
-			  			</InputBlock>
+			  			</InputBlock>*/}
 						<InputBlock name="pos" title="Должность" error={this.state.errors.pos}>
 			  				<select name="pos" onChange={this.handleChange}>
 			  					<option value="">Выберите должность</option>

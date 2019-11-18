@@ -1,16 +1,20 @@
 const request = require('../request');
-const carModel = require('../models/car');
-const empModel = require('../models/employee');
-const taskModel = require('../models/task');
-const spareModel = require('../models/spare');
 
-module.exports = app => {
+module.exports = (app, sequelize) => {
     request(app, '/data/init', (req, res, user) => {
-        res.json({
-            cars: (carModel()).list(),
-            emps: (empModel()).list(),
-            tasks: (taskModel()).list(),
-            spares: (spareModel()).list()
-        });
+    	sequelize.models.cars.scope('active').findAll().then(cars => {
+    		sequelize.models.employees.scope('active').findAll().then(emps => {
+    			sequelize.models.tasks.scope('active').findAll().then(tasks => {
+    				sequelize.models.spares.scope('active').findAll().then(spares => {
+						res.json({
+							cars: cars,
+							emps: emps,
+							tasks: tasks,
+							spares: spares
+						});
+					});
+				});
+			});
+		});
     });
 };

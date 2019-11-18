@@ -12,7 +12,7 @@ export default class CarBlock extends Component {
 		if (!confirm("Вы уверены, что хотите удалить автомобиль?")) {
 			return;
 		}
-		this.props.delCar({vin: this.props.data.vin}, res => {
+		this.props.delCar({id: this.props.data.id}, res => {
 			if (res.error) {
 				alert('Ошибка удаления автомобиля!');
 				return;
@@ -28,7 +28,7 @@ export default class CarBlock extends Component {
   		let className = "item"+(this.props.isActive ? " active" : "");
 
   		return (
-	  		<Link href={'/cars#'+this.props.data.vin}>
+	  		<Link href={'/cars#'+this.props.data.id}>
 				<a className={className} onClick={this.clickHandler}>
 					<div className="model">
 						{this.props.data.brand+' '+this.props.data.model}

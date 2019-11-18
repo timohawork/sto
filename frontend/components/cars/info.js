@@ -8,6 +8,7 @@ class CarInfo extends Component {
 
 		this.state = {
 			data: {
+				id: '',
 				num: '',
 				owner: '',
 				year: '',

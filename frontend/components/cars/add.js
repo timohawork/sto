@@ -7,6 +7,7 @@ class CarAddForm extends Component {
 		super();
 		this.state = {
 			data: {
+				id: '',
 				num: '',
 				owner: '',
 				year: 0,

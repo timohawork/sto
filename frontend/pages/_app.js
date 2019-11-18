@@ -85,10 +85,10 @@ class MyApp extends App {
 			let spares = {};
 
 			data.cars.map((car, index) => {
-				cars[car.vin] = car;
+				cars[car.id] = car;
 			});
 			data.emps.map((emp, index) => {
-				emps[emp.login] = emp;
+				emps[emp.id] = emp;
 			});
 			data.spares.map((spare, index) => {
 				spares[spare.id] = spare;
@@ -122,21 +122,13 @@ class MyApp extends App {
 			}
 			let list = this.state[type];
 			let _data = data.data ? data.data : value;
-			switch (type) {
-				case 'tasks':
-					list.push(_data);
-				break;
-				case 'cars':
-					list[_data.vin] = _data;
-				break;
-				case 'emps':
-				case 'spares':
-					list[_data.id] = _data;
-				break;
+			if (type == 'tasks') {
+				list.push(_data);
 			}
-			this.setState({
-				[type]: list
-			});
+			else {
+				list[_data.id] = _data;
+			}
+			this.setState({[type]: list});
 			cb({res: true, data: _data});
 		})
 		.catch(error => console.log(error));
@@ -160,27 +152,17 @@ class MyApp extends App {
 			}
 			let list = this.state[type];
 			let _data = data.data ? data.data : value;
-			switch (type) {
-				case 'tasks':
-					list.map((task, index) => {
-						if (task.id == _data.id) {
-							list[index] = _data;
-						}
-					});
-				break;
-				case 'cars':
-					list[_data.vin] = _data;
-				break;
-				case 'emps':
-					list[_data.login] = _data;
-				break;
-				case 'spares':
-					list[_data.id] = _data;
-				break;
+			if (type == 'tasks') {
+				list.map((task, index) => {
+					if (task.id == _data.id) {
+						list[index] = _data;
+					}
+				});
 			}
-			this.setState({
-				[type]: list
-			});
+			else {
+				list[_data.id] = _data;
+			}
+			this.setState({[type]: list});
 			cb({res: true, data: _data});
 		})
 		.catch(error => console.log(error));
@@ -203,27 +185,17 @@ class MyApp extends App {
 				return;
 			}
 			let list = this.state[type];
-			switch (type) {
-				case 'tasks':
-					list.map((task, index) => {
-						if (task.id == value.id) {
-							list = list.splice(index, 1);
-						}
-					});
-				break;
-				case 'cars':
-					delete list[value.vin];
-				break;
-				case 'emps':
-					delete list[value.login];
-				break;
-				case 'spares':
-					delete list[value.id];
-				break;
+			if (type == 'tasks') {
+				list.map((task, index) => {
+					if (task.id == value.id) {
+						list = list.splice(index, 1);
+					}
+				});
 			}
-			this.setState({
-				[type]: list
-			});
+			else {
+				delete list[value.id];
+			}
+			this.setState({[type]: list});
 			cb({res: true});
 		})
 		.catch(error => console.log(error));

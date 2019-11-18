@@ -1,37 +1,49 @@
 const request = require('../request');
-const model = require('../models/employee');
+const model = require('../helpers').model;
 
-module.exports = app => {
+module.exports = (app, sequelize) => {
     request(app, '/emps/add', (req, res, user) => {
-        const data = req.body;
-        const emp = model();
-        console.log('ADD employee:', data);
+        console.log('ADD employee:', req.body);
 
-        emp.add(data, errors => {
-            if (errors !== false) return res.status(404).json({errors: errors});
-            return res.json({res: true, data: emp.data});
-        });
+        model.add(
+            sequelize.models.employees, 
+            req.body, 
+            newItem => {
+                res.json({res: true, data: newItem});
+            },
+            errors => {
+                res.status(404).json({errors: errors});
+            }
+        );
     });
 
     request(app, '/emps/edit', (req, res, user) => {
-        const data = req.body;
-        const emp = model();
-        console.log('EDIT employee:', data);
+        console.log('EDIT employee:', req.body);
 
-        emp.edit(data, errors => {
-            if (errors !== false) return res.status(404).json({errors: errors});
-            return res.json({res: true});
-        });
+        model.edit(
+            sequelize.models.employees, 
+            req.body, 
+            updatedItem => {
+                res.json({res: true, data: updatedItem});
+            },
+            errors => {
+                res.status(404).json({errors: errors});
+            }
+        );
     });
 
     request(app, '/emps/del', (req, res, user) => {
-        const data = req.body;
-        const emp = model();
-        console.log('DEL employee:', data);
+        console.log('DEL employee:', req.body);
 
-        emp.del(data.login, error => {
-            if (error) return res.status(404).json({error: error});
-            return res.json({res: true});
-        });
+        model.del(
+            sequelize.models.employees, 
+            req.body, 
+            () => {
+                res.json({res: true});
+            },
+            errors => {
+                res.status(404).json({errors: errors});
+            }
+        );
     });
 };

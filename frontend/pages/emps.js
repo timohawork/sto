@@ -53,7 +53,7 @@ class Emps extends Component {
 			sumTotal: 0
 		};
 		this.props.appData.tasks.map(task => {
-			if (task.empId == value.login) {
+			if (task.empId == value.id) {
 				tasks.push(task);
 
 				info.sumTotal += task.sum*1;
@@ -61,12 +61,12 @@ class Emps extends Component {
 		});
 
 		this.setState({
-			_id: value.login,
+			_id: value.id,
 			activeEmp: value,
 			activeInfo: info,
 			tasks: tasks
 		});
-		window.location.hash = '#'+value.login;
+		window.location.hash = '#'+value.id;
 		this.state.editMode && this.setState({editMode: false});
 	};
 

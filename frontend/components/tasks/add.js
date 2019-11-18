@@ -7,6 +7,7 @@ class TaskAddForm extends Component {
 		super();
 		this.state = {
 			data: {
+				id: '',
 				title: '',
 				comment: '',
 				type: '',
@@ -64,7 +65,7 @@ class TaskAddForm extends Component {
 			  				<select name="carId" onChange={this.handleChange}>
 			  					<option value="">Выберите автомобиль</option>
 			  					{this.props.appData.cars ? Object.keys(this.props.appData.cars).map((id, index) => (
-		  							<option key={id} value={this.props.appData.cars[id].vin}>{this.props.appData.cars[id].brand+' '+this.props.appData.cars[id].model+'('+this.props.appData.cars[id].num+')'}</option>
+		  							<option key={id} value={this.props.appData.cars[id].id}>{this.props.appData.cars[id].brand+' '+this.props.appData.cars[id].model+'('+this.props.appData.cars[id].num+')'}</option>
 		  						)) : null}
 			  				</select>
 			  			</InputBlock>
@@ -72,7 +73,7 @@ class TaskAddForm extends Component {
 			  				<select name="empId" onChange={this.handleChange}>
 			  					<option value="">Выберите сотрудника</option>
 			  					{this.props.appData.emps ? Object.keys(this.props.appData.emps).map((id, index) => (
-		  							<option key={id} value={this.props.appData.emps[id].login}>{this.props.appData.emps[id].name}</option>
+		  							<option key={id} value={this.props.appData.emps[id].id}>{this.props.appData.emps[id].name}</option>
 		  						)) : null}
 			  				</select>
 			  			</InputBlock>

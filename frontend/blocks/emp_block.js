@@ -12,7 +12,7 @@ export default class EmpBlock extends Component {
 		if (!confirm("Вы уверены, что хотите удалить сотрудника?")) {
 			return;
 		}
-		this.props.delEmp({login: this.props.data.login}, res => {
+		this.props.delEmp({id: this.props.data.id}, res => {
 			if (res.error) {
 				alert('Ошибка удаления сотрудника!');
 				return;
@@ -26,7 +26,7 @@ export default class EmpBlock extends Component {
   		let className = "item"+(this.props.isActive ? " active" : "");
 
   		return (
-	  		<Link href={'#'+this.props.data.login}>
+	  		<Link href={'#'+this.props.data.id}>
 				<a className={className} onClick={this.clickHandler}>
 					<div className="name">
 						{this.props.data.name}

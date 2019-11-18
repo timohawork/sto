@@ -30,7 +30,7 @@ class TasksList extends Component {
 						key={task.id} 
 						data={task} 
 						appData={this.props.appData}
-						isActive={this.props.activeItem &&this.props.activeItem.title == task.title}
+						isActive={this.props.activeItem &&this.props.activeItem.id == task.id}
 						setActiveTask={this.props.setActiveTask} 
 						delTask={this.props.delTask}
 					/>

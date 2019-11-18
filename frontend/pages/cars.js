@@ -58,7 +58,7 @@ class Cars extends Component {
 			sparesTotal: 0
 		};
 		this.props.appData.tasks.map(task => {
-			if (task.carId == value.vin) {
+			if (task.carId == value.id) {
 				tasks.push(task);
 
 				if (!emps[task.empId]) {
@@ -81,13 +81,13 @@ class Cars extends Component {
 		});
 
 		this.setState({
-			_id: value.vin,
+			_id: value.id,
 			activeCar: value,
 			activeInfo: info,
 			tasks: tasks,
 			emps: emps
 		});
-		window.location.hash = '#'+value.vin;
+		window.location.hash = '#'+value.id;
 		this.state.editMode && this.setState({editMode: false});
 	};
 

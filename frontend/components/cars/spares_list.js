@@ -8,7 +8,7 @@ class CarSparesList extends Component {
 		if (this.props.activeItem && Object.keys(this.props.appData.spares).length) {
 			let _tasks = [];
 			this.props.appData.tasks.map((task, index) => {
-				if (task.carId == this.props.activeItem.vin && _tasks.indexOf(task.carId) == -1) {
+				if (task.carId == this.props.activeItem.id && _tasks.indexOf(task.carId) == -1) {
 					_tasks.push(task.id);
 				}
 			});

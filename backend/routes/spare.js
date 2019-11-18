@@ -1,37 +1,49 @@
 const request = require('../request');
-const model = require('../models/spare');
+const model = require('../helpers').model;
 
-module.exports = app => {
+module.exports = (app, sequelize) => {
     request(app, '/spares/add', (req, res, user) => {
-    	const data = req.body;
-    	const spare = model();
-    	console.log('ADD spare:', data);
+    	console.log('ADD spare:', req.body);
 
-    	spare.add(data, errors => {
-        	if (errors !== false) return res.status(404).json({errors: errors});
-        	return res.json({res: true, data: spare.data});
-        });
+    	model.add(
+            sequelize.models.spares, 
+            req.body, 
+            newItem => {
+                res.json({res: true, data: newItem});
+            },
+            errors => {
+                res.status(404).json({errors: errors});
+            }
+        );
     });
 
     request(app, '/spares/edit', (req, res, user) => {
-        const data = req.body;
-        const spare = model();
-        console.log('EDIT spare:', data);
+        console.log('EDIT spare:', req.body);
 
-        spare.edit(data, errors => {
-            if (errors !== false) return res.status(404).json({errors: errors});
-            return res.json({res: true});
-        });
+        model.edit(
+            sequelize.models.spares, 
+            req.body, 
+            updatedItem => {
+                res.json({res: true, data: updatedItem});
+            },
+            errors => {
+                res.status(404).json({errors: errors});
+            }
+        );
     });
 
     request(app, '/spares/del', (req, res, user) => {
-        const data = req.body;
-        const spare = model();
-        console.log('DEL spare:', data);
+        console.log('DEL spare:', req.body);
 
-        spare.del(data.id, error => {
-            if (error) return res.status(404).json({error: error});
-            return res.json({res: true});
-        });
+        model.del(
+            sequelize.models.spares, 
+            req.body, 
+            () => {
+                res.json({res: true});
+            },
+            errors => {
+                res.status(404).json({errors: errors});
+            }
+        );
     });
 };

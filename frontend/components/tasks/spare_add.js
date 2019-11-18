@@ -7,6 +7,7 @@ class SpareAddForm extends Component {
 		super();
 		this.state = {
 			data: {
+				id: '',
 				title: '',
 				catNum: '',
 				price: '',
@@ -24,8 +25,9 @@ class SpareAddForm extends Component {
 	
 	submitFormHandler = event => {
 		event.preventDefault();
-		this.state.taskId = this.props.activeItem.id;
-		this.props.newSpare(this.state.data, res => {
+		let data = this.state.data;
+		data.taskId = this.props.activeItem.id;
+		this.props.newSpare(data, res => {
 			if (res.errors) {
 				this.setState({errors: res.errors});
 				return;
