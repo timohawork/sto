@@ -34,10 +34,10 @@ export default class TaskBlock extends Component {
 						{this.props.data.title}
 					</div>
 					<div className="status">
-						{this.props.appData.statuses[this.props.data.status]}
+						{this.props.appParams.statuses[this.props.data.status]}
 					</div>
 					<div className="type">
-						{this.props.appData.types[this.props.data.type]}
+						{this.props.appParams.types[this.props.data.type]}
 					</div>
 					<div className="start_date">
 						{this.props.data.start_date}

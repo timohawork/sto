@@ -1,44 +1,51 @@
 //TODO: решить проблему со ссылками (переход по страницам без перезагрузки)
 
+const params = {
+	types: {
+		1: 'Диагностика',
+		2: 'Плановое ТО',
+		3: 'Замена масла',
+		4: 'Шиномонтаж',
+		5: 'Ремонт электрики'
+	},
+	statuses: {
+		1: 'Новая',
+		2: 'В работе',
+		3: 'Ожидает оплаты',
+		4: 'Выполнена',
+		5: 'Отклонена'
+	},
+	positions: {
+		1: 'Работник',
+		2: 'Механик',
+		3: 'Электрик',
+		4: 'Мастер'
+	}
+};
+
 import React from 'react';
 import App from 'next/app';
 import Head from "next/head";
 import { withRouter } from "next/router";
 
 import Auth from './../components/auth.js';
-
 const auth = new Auth();
+
+import { createStore } from "redux";
+import { Provider } from 'react-redux';
+import reducer from "./../redux/reducer.js";
+const Store = createStore(reducer, {
+	cars: {},
+	emps: {},
+	tasks: [],
+	spares: {}
+});
 
 class MyApp extends App {
 	constructor(props) {
 		super(props);
 		this.state = {
-			loggedIn: false,
-			cars: {},
-			emps: {},
-			tasks: [],
-			spares: {},
-
-			types: {
-				1: 'Диагностика',
-				2: 'Плановое ТО',
-				3: 'Замена масла',
-				4: 'Шиномонтаж',
-				5: 'Ремонт электрики'
-			},
-			statuses: {
-				1: 'Новая',
-				2: 'В работе',
-				3: 'Ожидает оплаты',
-				4: 'Выполнена',
-				5: 'Отклонена'
-			},
-			positions: {
-				1: 'Работник',
-				2: 'Механик',
-				3: 'Электрик',
-				4: 'Мастер'
-			}
+			loggedIn: false
 		};
 	}
 
@@ -93,11 +100,21 @@ class MyApp extends App {
 			data.spares.map((spare, index) => {
 				spares[spare.id] = spare;
 			});
-			this.setState({
-				cars: cars,
-				emps: emps,
-				tasks: data.tasks,
-				spares: spares
+			Store.dispatch({
+				type: 'INIT_CARS',
+				data: cars
+			});
+			Store.dispatch({
+				type: 'INIT_EMPS',
+				data: emps
+			});
+			Store.dispatch({
+				type: 'INIT_TASKS',
+				data: data.tasks
+			});
+			Store.dispatch({
+				type: 'INIT_SPARES',
+				data: spares
 			});
 			cb && cb();
 		})
@@ -120,15 +137,25 @@ class MyApp extends App {
 				cb({errors: data.errors});
 				return;
 			}
-			let list = this.state[type];
 			let _data = data.data ? data.data : value;
-			if (type == 'tasks') {
-				list.push(_data);
+			let action = '';
+			switch (type) {
+				case 'cars':
+					action = 'ADD_CAR';
+				break;
+				case 'emps':
+					action = 'ADD_EMP';
+				break;
+				case 'tasks':
+					action = 'ADD_TASK';
+				break;
+				case 'spares':
+					action = 'ADD_SPARE';
 			}
-			else {
-				list[_data.id] = _data;
-			}
-			this.setState({[type]: list});
+			Store.dispatch({
+				type: action,
+				data: _data
+			});
 			cb({res: true, data: _data});
 		})
 		.catch(error => console.log(error));
@@ -150,19 +177,25 @@ class MyApp extends App {
 				cb({errors: data.errors});
 				return;
 			}
-			let list = this.state[type];
 			let _data = data.data ? data.data : value;
-			if (type == 'tasks') {
-				list.map((task, index) => {
-					if (task.id == _data.id) {
-						list[index] = _data;
-					}
-				});
+			let action = '';
+			switch (type) {
+				case 'cars':
+					action = 'EDIT_CAR';
+				break;
+				case 'emps':
+					action = 'EDIT_EMP';
+				break;
+				case 'tasks':
+					action = 'EDIT_TASK';
+				break;
+				case 'spares':
+					action = 'EDIT_SPARE';
 			}
-			else {
-				list[_data.id] = _data;
-			}
-			this.setState({[type]: list});
+			Store.dispatch({
+				type: action,
+				data: _data
+			});
 			cb({res: true, data: _data});
 		})
 		.catch(error => console.log(error));
@@ -184,18 +217,24 @@ class MyApp extends App {
 				cb({error: data.error});
 				return;
 			}
-			let list = this.state[type];
-			if (type == 'tasks') {
-				list.map((task, index) => {
-					if (task.id == value.id) {
-						list = list.splice(index, 1);
-					}
-				});
+			let action = '';
+			switch (type) {
+				case 'cars':
+					action = 'DEL_CAR';
+				break;
+				case 'emps':
+					action = 'DEL_EMP';
+				break;
+				case 'tasks':
+					action = 'DEL_TASK';
+				break;
+				case 'spares':
+					action = 'DEL_SPARE';
 			}
-			else {
-				delete list[value.id];
-			}
-			this.setState({[type]: list});
+			Store.dispatch({
+				type: action,
+				id: value.id
+			});
 			cb({res: true});
 		})
 		.catch(error => console.log(error));
@@ -211,14 +250,14 @@ class MyApp extends App {
 		const { Component, pageProps } = this.props;
 
 		return (
-			<>
+			<Provider store={Store}>
 				<Head>
 					<link rel="shortcut icon" href="/static/favicon.ico" />
 					<link href="/static/css/main.css" rel="stylesheet" />
 				</Head>
 				<Component {...pageProps} 
 					appInit={this.init} 
-					appData={this.state} 
+					appParams={params} 
 					addToList={this.addToList} 
 					editItem={this.editItem} 
 					delItem={this.delItem}
@@ -226,7 +265,7 @@ class MyApp extends App {
 				{ this.state.loggedIn ? 
 					<div id="logout" onClick={this.logoutHandler}></div>
 				: null }
-			</>
+			</Provider>
 		);
 	}
 }

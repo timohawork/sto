@@ -1,4 +1,5 @@
 import React, { Component} from "react";
+import { connect } from 'react-redux';
 import Head from "next/head";
 import Link from "next/link";
 
@@ -164,4 +165,8 @@ class Cars extends Component {
 	}
 }
 
-export default Cars;
+const mapStateToProps = (state) => {
+	return {appData: state};
+};
+
+export default connect(mapStateToProps)(Cars);

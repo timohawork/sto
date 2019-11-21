@@ -30,6 +30,7 @@ class TasksList extends Component {
 						key={task.id} 
 						data={task} 
 						appData={this.props.appData}
+						appParams={this.props.appParams} 
 						isActive={this.props.activeItem &&this.props.activeItem.id == task.id}
 						setActiveTask={this.props.setActiveTask} 
 						delTask={this.props.delTask}
@@ -40,7 +41,8 @@ class TasksList extends Component {
 				</a>
 				{this.state.formIsShown ? 
 					<TaskAddFrom 
-						appData={this.props.appData}
+						appData={this.props.appData} 
+						appParams={this.props.appParams} 
 						hideForm={this.hideForm} 
 						newTask={this.props.newTask} 
 					/>

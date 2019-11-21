@@ -1,5 +1,5 @@
 import React, { Component} from "react";
-import fetch from "isomorphic-unfetch";
+import { connect } from 'react-redux';
 import Head from "next/head";
 import Link from "next/link";
 
@@ -107,6 +107,7 @@ class Emps extends Component {
 				<div className="container">
 					<List 
 						appData={this.props.appData} 
+						appParams={this.props.appParams} 
 						activeItem={this.state.activeEmp}
 						setActiveEmp={this.setActiveEmp} 
 						newEmp={this.newEmp} 
@@ -117,7 +118,7 @@ class Emps extends Component {
 							<Link href="/"><a id="home_link"></a></Link>
 							{ this.state.activeEmp && this.state.activeInfo ?
 								<Info 
-									positions={this.props.appData.positions}
+									positions={this.props.appParams.positions}
 									data={this.state.activeEmp} 
 									info={this.state.activeInfo} 
 									editEmp={this.editEmp}
@@ -127,11 +128,19 @@ class Emps extends Component {
 							: null}
 						</div>
 					</div>
-					<TasksList appData={this.props.appData} data={this.state.tasks} />
+					<TasksList 
+						appData={this.props.appData} 
+						appParams={this.props.appParams} 
+						data={this.state.tasks} 
+					/>
 				</div>
 			</>
 		);
 	}
 }
 
-export default Emps;
+const mapStateToProps = (state) => {
+	return {appData: state};
+};
+
+export default connect(mapStateToProps)(Emps);

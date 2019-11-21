@@ -65,7 +65,7 @@ class TaskInfo extends Component {
 					<>
 						<h1 className="title">{'Задача: '+this.props.data.title}</h1>
 						<div>
-							<div className="type">{this.props.appData.types[this.props.data.type]}</div>
+							<div className="type">{this.props.appParams.types[this.props.data.type]}</div>
 							<div className="sum">{this.props.data.sum}Р</div>
 							<Link href={'/cars#'+car.vin}>
 								<a className="car">
@@ -86,8 +86,8 @@ class TaskInfo extends Component {
 							: null}
 							<div className="status">
 								<select name="status" defaultValue={this.props.data.status} onChange={this.statusUpdate}>
-									{Object.keys(this.props.appData.statuses).map((status, index) => (
-										<option key={status} value={status}>{this.props.appData.statuses[status]}</option>
+									{Object.keys(this.props.appParams.statuses).map((status, index) => (
+										<option key={status} value={status}>{this.props.appParams.statuses[status]}</option>
 									))}
 								</select>
 							</div>
@@ -101,8 +101,8 @@ class TaskInfo extends Component {
 			  			</InputBlock>
 			  			<InputBlock name="type" title="Тип" error={this.state.errors.type}>
 			  				<select name="type" onChange={this.handleChange} defaultValue={this.state.data.type}>
-			  					{Object.keys(this.props.appData.types).map((id, index) => (
-			  						<option key={index} value={id}>{this.props.appData.types[id]}</option>
+			  					{Object.keys(this.props.appParams.types).map((id, index) => (
+			  						<option key={index} value={id}>{this.props.appParams.types[id]}</option>
 		  						))}
 			  				</select>
 			  			</InputBlock>

@@ -53,8 +53,8 @@ class TaskAddForm extends Component {
 			  			<InputBlock name="type" title="Тип" error={this.state.errors.type}>
 			  				<select name="type" onChange={this.handleChange}>
 			  					<option value="">Выберите тип</option>
-			  					{Object.keys(this.props.appData.types).map((id, index) => (
-			  						<option key={index} value={id}>{this.props.appData.types[id]}</option>
+			  					{Object.keys(this.props.appParams.types).map((id, index) => (
+			  						<option key={index} value={id}>{this.props.appParams.types[id]}</option>
 		  						))}
 			  				</select>
 			  			</InputBlock>

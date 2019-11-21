@@ -29,9 +29,9 @@ class EmpsList extends Component {
 					<EmpBlock 
 						key={id} 
 						data={this.props.appData.emps[id]} 
-						isActive={this.props.activeItem &&this.props.activeItem.id == this.props.appData.emps[id].id} 
+						isActive={this.props.activeItem && this.props.activeItem.id == id} 
 						setActiveEmp={this.props.setActiveEmp} 
-						positions={this.props.appData.positions} 
+						positions={this.props.appParams.positions} 
 						delEmp={this.props.delEmp}
 					/>
 				)) : <div>Loading...</div>}
@@ -40,7 +40,7 @@ class EmpsList extends Component {
 				</a>
 				{ this.state.formIsShown ? 
 					<EmpAddForm 
-						positions={this.props.appData.positions} 
+						positions={this.props.appParams.positions} 
 						hideForm={this.hideForm} 
 						newEmp={this.props.newEmp} 
 					/>

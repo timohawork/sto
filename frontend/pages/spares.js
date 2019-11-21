@@ -1,5 +1,5 @@
 import React, { Component} from "react";
-import fetch from "isomorphic-unfetch";
+import { connect } from 'react-redux';
 import Head from "next/head";
 import Link from "next/link";
 
@@ -119,4 +119,8 @@ class Spares extends Component {
 	}
 }
 
-export default Spares;
+const mapStateToProps = (state) => {
+	return {appData: state};
+};
+
+export default connect(mapStateToProps)(Spares);

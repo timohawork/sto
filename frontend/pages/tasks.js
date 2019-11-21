@@ -1,5 +1,5 @@
 import React, { Component} from "react";
-import fetch from "isomorphic-unfetch";
+import { connect } from 'react-redux';
 import Head from "next/head";
 import Link from "next/link";
 
@@ -99,6 +99,7 @@ class Tasks extends Component {
 				<div className="container">
 					<List 
 						appData={this.props.appData}
+						appParams={this.props.appParams} 
 						activeItem={this.state.activeTask}
 						setActiveTask={this.setActiveTask}
 						newTask={this.newTask}
@@ -116,6 +117,7 @@ class Tasks extends Component {
 							{ this.state.activeTask ?
 								<Info 
 									appData={this.props.appData}
+									appParams={this.props.appParams} 
 									data={this.state.activeTask} 
 									editTask={this.editTask}
 									editMode={this.state.editMode}
@@ -135,4 +137,8 @@ class Tasks extends Component {
 	}
 }
 
-export default Tasks;
+const mapStateToProps = (state) => {
+	return {appData: state};
+};
+
+export default connect(mapStateToProps)(Tasks);
