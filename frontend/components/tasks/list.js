@@ -24,7 +24,7 @@ class TasksList extends Component {
 	render() {
 		return (
 			<div className="tasks-list">
-				<h2>Задачи</h2>
+				<p className="subtitle">Задачи</p>
 				{this.props.appData.tasks.map((task, index) => (
 					<TaskBlock 
 						key={task.id} 
@@ -37,7 +37,7 @@ class TasksList extends Component {
 					/>
 				))}
 				<a href="#" className="add-button" onClick={this.showForm}>
-					<img src="/static/img/icons/plus.png" alt="" />
+					<i className="fas fa-plus-circle"></i>
 				</a>
 				{this.state.formIsShown ? 
 					<TaskAddFrom 

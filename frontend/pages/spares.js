@@ -6,6 +6,8 @@ import Link from "next/link";
 import List from './../components/spares/list.js';
 import Info from './../components/spares/info.js';
 
+import './../styles/spares.scss';
+
 class Spares extends Component {
 	constructor(props) {
 		super(props);
@@ -89,7 +91,6 @@ class Spares extends Component {
 			<>
 				<Head>
 					<title>{process.env.TITLE+' - Запчасти'}</title>
-					<link href="/static/css/spares.css" rel="stylesheet" />
 				</Head>
 				<div className="container">
 					<List 
@@ -102,7 +103,6 @@ class Spares extends Component {
 					/>
 					<div className="middle-block">
 						<div className="spare-info">
-							<Link href="/"><a id="home_link"></a></Link>
 							{ this.state.activeSpare ?
 								<Info 
 									data={this.state.activeSpare} 

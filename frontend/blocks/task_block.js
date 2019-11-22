@@ -45,7 +45,9 @@ export default class TaskBlock extends Component {
 					<div className="sum">
 						{this.props.data.sum}Р
 					</div>
-					<div className="del" onClick={this.delHandler}></div>
+					<div className="del" onClick={this.delHandler}>
+						<i className="far fa-trash-alt"></i>
+					</div>
 				</a>
 			</Link>
 	  	);

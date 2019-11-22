@@ -33,18 +33,18 @@ class SparesList extends Component {
 	render() {
 		return (
 			<div className="spares-list">
-				<h2>Запчасти</h2>
+				<p className="subtitle">Запчасти</p>
 				{this.props.activeItem && this.props.appData.spares ? Object.keys(this.props.appData.spares).map((id, index) => (
 					<Block 
 						key={index} 
 						spare={this.props.appData.spares[id]}
 						activeItem={this.props.activeItem}
 					/>
-				)) : <div>Loading...</div>}
+				)) : <p className="empty-block">Список запчастей пуст</p>}
 				{this.props.activeItem ? 
 					<>
 						<a href="#" className="add-button" onClick={this.showForm}>
-							<img src="/static/img/icons/plus.png" alt="" />
+							<i className="fas fa-plus-circle"></i>
 						</a>
 						{ this.state.formIsShown ? 
 							<SpareAddForm 

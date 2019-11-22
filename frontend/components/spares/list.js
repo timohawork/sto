@@ -7,7 +7,7 @@ class SparesList extends Component {
 	render() {
 		return (
 			<div className="spares-list">
-				<h2>Запчасти</h2>
+				<p className="subtitle">Запчасти</p>
 				{this.props.appData.cars && this.props.appData.spares ? Object.keys(this.props.appData.cars).map((id, index) => (
 					<SpareCarBlock 
 						key={index} 
@@ -19,7 +19,7 @@ class SparesList extends Component {
 						openCarBlock={this.props.openCarBlock}
 						delSpare={this.props.delSpare}
 					/>
-				)) : <div>Loading...</div>}
+				)) : <p className="empty-block">Список запчастей пуст</p>}
 			</div>
 		);
 	}

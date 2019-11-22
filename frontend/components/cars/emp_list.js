@@ -9,14 +9,14 @@ class CarEmpList extends Component {
 					<ul>
 						{Object.keys(this.props.data).map((emp, index) => (
 							<li key={index}>
-								<img src="/static/img/icons/employee.png" alt={this.props.appData.emps[emp].name} />
+								<i className="fas fa-user-cog"></i>
 								<div className="name">{this.props.appData.emps[emp].name}</div>
 								<div className="total">{this.props.data[emp].total+'Р'}</div>
 							</li>
 						))}
 					</ul>
 				: <div>
-					<h3>К данному автомобилю не привязаны сотрудники</h3>
+					<p className="empty-block">К данному автомобилю не привязаны сотрудники</p>
 				</div>}
 			</div>
 		);

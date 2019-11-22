@@ -52,7 +52,9 @@ class SpareInfo extends Component {
 						<h1 className="title">{this.props.data.title}</h1>
 						<div className="catNum">{this.props.data.catNum}</div>
 						<div className="price">{this.props.data.price}Р</div>
-						<a href="#" className="editMode" onClick={this.toggleEditMode}>Редактировать</a>
+						<a href="#" className="editMode" onClick={this.toggleEditMode}>
+							<i className="fas fa-pen-square"></i>
+						</a>
 					</>
 				 : 
 					<form className="editForm" onSubmit={this.submitFormHandler}>

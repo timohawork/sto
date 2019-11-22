@@ -8,6 +8,8 @@ import Info from './../components/tasks/info.js';
 /*import TaskBaloon from './../blocks/task_baloon.js';*/
 import SparesList from './../components/tasks/spares_list.js';
 
+import './../styles/tasks.scss';
+
 class Tasks extends Component {
 	constructor() {
 		super();
@@ -94,7 +96,6 @@ class Tasks extends Component {
 			<>
 				<Head>
 					<title>{process.env.TITLE+' - Задачи'}</title>
-					<link href="/static/css/tasks.css" rel="stylesheet" />
 				</Head>
 				<div className="container">
 					<List 
@@ -113,7 +114,6 @@ class Tasks extends Component {
 					</div>*/}
 					<div className="middle-block">
 						<div className="task-info">
-							<Link href="/"><a id="home_link"></a></Link>
 							{ this.state.activeTask ?
 								<Info 
 									appData={this.props.appData}

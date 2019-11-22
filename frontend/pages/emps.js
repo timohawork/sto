@@ -7,6 +7,8 @@ import List from './../components/emps/list.js';
 import Info from './../components/emps/info.js';
 import TasksList from './../components/emps/tasks_list.js';
 
+import './../styles/emps.scss';
+
 class Emps extends Component {
 	constructor(props) {
 		super(props);
@@ -102,7 +104,6 @@ class Emps extends Component {
 			<>
 				<Head>
 					<title>{process.env.TITLE+' - Сотрудники'}</title>
-					<link href="/static/css/emps.css" rel="stylesheet" />
 				</Head>
 				<div className="container">
 					<List 
@@ -115,7 +116,6 @@ class Emps extends Component {
 					/>
 					<div className="middle-block">
 						<div className="emp-info">
-							<Link href="/"><a id="home_link"></a></Link>
 							{ this.state.activeEmp && this.state.activeInfo ?
 								<Info 
 									positions={this.props.appParams.positions}

@@ -50,15 +50,19 @@ class EmpInfo extends Component {
 				{!this.props.editMode ? 
 					<>
 						<h1 className="name">{this.props.data.name}</h1>
-						<div className="left">
-							<div className="pos">{this.props.positions[this.props.data.pos]}</div>
-						</div>
-						<div className="right">
-							<div>
-								Всего заработано: <b>{this.props.info.sumTotal}Р</b>
+						<div className="inner">
+							<div className="left">
+								<div className="pos">{this.props.positions[this.props.data.pos]}</div>
 							</div>
+							<div className="right">
+								<div>
+									Всего заработано: <b>{this.props.info.sumTotal}Р</b>
+								</div>
+							</div>
+							<a href="#" className="editMode" onClick={this.toggleEditMode}>
+								<i className="fas fa-pen-square"></i>
+							</a>
 						</div>
-						<a href="#" className="editMode" onClick={this.toggleEditMode}>Редактировать</a>
 					</>
 				 : 
 					<form className="editForm" onSubmit={this.submitFormHandler}>
@@ -66,16 +70,16 @@ class EmpInfo extends Component {
 			  				<input type="text" name="name" value={this.state.data.name} onChange={this.handleChange} />
 			  			</InputBlock>
 			  			<InputBlock name="pos" title="Должность" error={this.state.errors.pos}>
-			  				<select name="pos" onChange={this.handleChange} defaultValue={this.state.data.pos}>
+			  				<select className="select" name="pos" onChange={this.handleChange} defaultValue={this.state.data.pos}>
 			  					{Object.keys(this.props.positions).map((pos, index) => (
 			  						<option key={pos} value={pos}>{this.props.positions[pos]}</option>
 			  					))}
 			  				</select>
 			  			</InputBlock>
-			  			<div>
-							<input type="submit" value="Сохранить" />
+			  			<div className="input-block">
+							<input className="submit" type="submit" value="Сохранить" />
+							<a href="#" className="editMode" onClick={this.toggleEditMode}>Отменить</a>
 						</div>
-			  			<a href="#" className="editMode" onClick={this.toggleEditMode}>Отменить</a>
 					</form>
 				}
 			</>

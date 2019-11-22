@@ -9,6 +9,8 @@ import EmpList from './../components/cars/emp_list.js';
 import TasksList from './../components/cars/tasks_list.js';
 import SparesList from './../components/cars/spares_list.js';
 
+import './../styles/cars.scss';
+
 class Cars extends Component {
 	constructor(props) {
 		super(props);
@@ -124,7 +126,6 @@ class Cars extends Component {
 			<>
 				<Head>
 					<title>{process.env.TITLE+' - Автомобили'}</title>
-					<link href="/static/css/cars.css" rel="stylesheet" />
 				</Head>
 				<div className="container">
 					<List 
@@ -136,7 +137,6 @@ class Cars extends Component {
 					/>
 					<div className="middle-block">
 						<div className="car-info">
-							<Link href="/"><a id="home_link"></a></Link>
 							{ this.state.activeCar && this.state.activeInfo ?
 								<Info 
 									data={this.state.activeCar} 

@@ -24,7 +24,7 @@ class EmpsList extends Component {
 	render() {
 		return (
 			<div className="emps-list">
-				<h2>Сотрудники</h2>
+				<p className="subtitle">Сотрудники</p>
 				{this.props.appData.emps ? Object.keys(this.props.appData.emps).map((id, index) => (
 					<EmpBlock 
 						key={id} 
@@ -34,9 +34,9 @@ class EmpsList extends Component {
 						positions={this.props.appParams.positions} 
 						delEmp={this.props.delEmp}
 					/>
-				)) : <div>Loading...</div>}
+				)) : <p className="empty-block">Список сотрудников пуст</p>}
 				<a href="#" className="add-button" onClick={this.showForm}>
-					<img src="/static/img/icons/plus.png" alt="" />
+					<i className="fas fa-plus-circle"></i>
 				</a>
 				{ this.state.formIsShown ? 
 					<EmpAddForm 

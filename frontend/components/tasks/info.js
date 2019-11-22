@@ -92,7 +92,9 @@ class TaskInfo extends Component {
 								</select>
 							</div>
 						</div>
-						<a href="#" className="editMode" onClick={this.toggleEditMode}>Редактировать</a>
+						<a href="#" className="editMode" onClick={this.toggleEditMode}>
+							<i className="fas fa-pen-square"></i>
+						</a>
 					</>
 				 : 
 					<form className="editForm" onSubmit={this.submitFormHandler}>

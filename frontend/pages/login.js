@@ -5,6 +5,8 @@ import Link from "next/link";
 
 import Auth from './../components/auth.js';
 
+import './../styles/login.scss';
+
 const auth = new Auth();
 
 class Login extends Component {
@@ -45,21 +47,20 @@ class Login extends Component {
 			<>
 				<Head>
 					<title>{process.env.TITLE+' - Вход'}</title>
-					<link href="/static/css/login.css" rel="stylesheet" />
 				</Head>
 				<div className="container">
 					<div className="login-form">
 						<h1>Вход в систему</h1>
 						<form onSubmit={this.submitFormHandler}>
-			  				<input type="text" name="login" onChange={this.handleChange} />
+			  				<input type="text" name="login" placeholder="Логин" onChange={this.handleChange} />
 			  				{ this.state.errors.login ? 
 			  					<p className="error">{this.state.errors.login}</p>
 		  					: null }
-			  				<input type="password" name="password" onChange={this.handleChange} />
+			  				<input type="password" name="password" placeholder="Пароль" onChange={this.handleChange} />
 			  				{ this.state.errors.password ? 
 			  					<p className="error">{this.state.errors.password}</p>
 		  					: null }
-							<input type="submit" value="Войти" />
+							<input className="submit" type="submit" value="Войти" />
 						</form>
 					</div>
 				</div>

@@ -71,7 +71,9 @@ class CarInfo extends Component {
 								Всего на запчасти: <b>{this.props.info.sparesTotal}Р</b>
 							</div>
 						</div>
-						<a href="#" className="editMode" onClick={this.toggleEditMode}>Редактировать</a>
+						<a href="#" className="editMode" onClick={this.toggleEditMode}>
+							<i className="fas fa-pen-square"></i>
+						</a>
 					</>
 				 : 
 					<form className="editForm" onSubmit={this.submitFormHandler}>

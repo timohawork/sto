@@ -26,7 +26,10 @@ const params = {
 import React from 'react';
 import App from 'next/app';
 import Head from "next/head";
+import Link from "next/link";
 import { withRouter } from "next/router";
+
+import './../styles/main.scss';
 
 import Auth from './../components/auth.js';
 const auth = new Auth();
@@ -248,12 +251,13 @@ class MyApp extends App {
 
 	render() {
 		const { Component, pageProps } = this.props;
+		let path = this.props.router.pathname.substr(1);
 
 		return (
 			<Provider store={Store}>
 				<Head>
 					<link rel="shortcut icon" href="/static/favicon.ico" />
-					<link href="/static/css/main.css" rel="stylesheet" />
+					<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" />
 				</Head>
 				<Component {...pageProps} 
 					appInit={this.init} 
@@ -263,8 +267,11 @@ class MyApp extends App {
 					delItem={this.delItem}
 				/>
 				{ this.state.loggedIn ? 
-					<div id="logout" onClick={this.logoutHandler}></div>
+					<div id="logout" onClick={this.logoutHandler}><i className="fas fa-sign-out-alt"></i></div>
 				: null }
+				{ path != '' && path != 'login' ? 
+					<Link href="/"><a id="home_link"><i className="fas fa-home"></i></a></Link>
+				 : null }
 			</Provider>
 		);
 	}

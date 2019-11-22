@@ -80,7 +80,9 @@ export default class SpareCarBlock extends Component {
 									{ spare.install_date ? 
 										<div className="install_date">{spare.install_date}</div>
 									 : null }
-									<div className="del" onClick={(event) => this.delHandler(spare, event)}></div>
+									<div className="del" onClick={(event) => this.delHandler(spare, event)}>
+										<i className="far fa-trash-alt"></i>
+									</div>
 			  					</a>
 		  					</Link>
 	  					)) }

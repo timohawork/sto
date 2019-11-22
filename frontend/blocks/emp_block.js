@@ -34,7 +34,9 @@ export default class EmpBlock extends Component {
 					<div className="pos">
 						{this.props.positions[this.props.data.pos]}
 					</div>
-					<div className="del" onClick={this.delHandler}></div>
+					<div className="del" onClick={this.delHandler}>
+						<i className="far fa-trash-alt"></i>
+					</div>
 				</a>
 			</Link>
 	  	);

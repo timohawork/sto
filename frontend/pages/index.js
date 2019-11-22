@@ -2,11 +2,13 @@ import React, { Component} from "react";
 import Head from "next/head";
 import Link from "next/link";
 
+import './../styles/index.scss';
+
 const Block = props => (
 	<Link href={props.url}>
 		<a className="block">
-			<h1>{props.title}</h1>
-			<img src={`/static/img/icons/${props.img}`} alt={props.title} />
+			<span>{props.title}</span>
+			<i className={'fas fa-'+props.icon}></i>
 		</a>
 	</Link>
 );
@@ -17,14 +19,14 @@ class Main extends Component {
 			<div>
 				<Head>
 					<title>{process.env.TITLE+' - Главная'}</title>
-					<link href="/static/css/index.css" rel="stylesheet" />
 				</Head>
 				<div className="container">
 					<div className="main-block">
-						<Block title="Автомобили" url="/cars" img="car.png" />
-						<Block title="Сотрудники" url="/emps" img="employee.png" />
-						<Block title="Зап.части" url="/spares" img="spares.jpg" />
-						<Block title="Задачи" url="/tasks" img="task.png" />
+						<h1>{process.env.TITLE}</h1>
+						<Block title="Автомобили" url="/cars" icon="car" />
+						<Block title="Сотрудники" url="/emps" icon="users" />
+						<Block title="Зап.части" url="/spares" icon="cogs" />
+						<Block title="Задачи" url="/tasks" icon="tasks" />
 					</div>
 				</div>
 			</div>

@@ -43,7 +43,9 @@ export default class CarBlock extends Component {
 					<div className="phone">
 						{this.props.data.phone}
 					</div>
-					<div className="del" onClick={this.delHandler}></div>
+					<div className="del" onClick={this.delHandler}>
+						<i className="far fa-trash-alt"></i>
+					</div>
 				</a>
 			</Link>
 	  	);

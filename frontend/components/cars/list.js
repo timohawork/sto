@@ -23,8 +23,8 @@ class CarsList extends Component {
 
 	render() {
 		return (
-			<div className="cars-list">
-				<h2>Автомобили</h2>
+			<div id="pwebkitscroller" className="cars-list">
+				<p className="subtitle">Автомобили</p>
 				{this.props.list ? Object.keys(this.props.list).map((id, index) => (
 					<CarBlock 
 						key={this.props.list[id].id} 
@@ -34,9 +34,11 @@ class CarsList extends Component {
 						delCar={this.props.delCar}
 					/>
 				)) : <div>Loading...</div>}
-				<a href="#" className="add-button" onClick={this.showForm}>
-					<img src="/static/img/icons/plus.png" alt="" />
-				</a>
+				<div className="btn-box">
+					<a href="#" className="add-button" onClick={this.showForm}>
+						<i className="fas fa-plus-circle"></i>
+					</a>
+				</div>
 				{ this.state.formIsShown ? <CarAddFrom hideForm={this.hideForm} newCar={this.props.newCar} /> : null }
 			</div>
 		);

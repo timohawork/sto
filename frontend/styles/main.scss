@@ -1,0 +1,312 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+* {
+    box-sizing: border-box;
+    outline: none; 
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+#__next {
+    overflow: hidden;
+    padding: 100px 0;
+    width: 100%;
+}
+
+h1, h2, h3 {
+	text-align: center;
+}
+
+.container {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+    max-width: 1250px;
+    width: 100%;
+
+    a {
+        color: #333;
+    }
+}
+
+#logout {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    width: 40px;
+    height: 40px;
+    opacity: .5;
+    cursor: pointer;
+    font-size: 2em;
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    -o-transition: all .2s linear;
+    background: transparent;
+    border-radius: 3px;
+    border: 1px solid #ccc; 
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        opacity: 1;
+        transition: all .2s linear;
+        -webkit-transition: all .2s linear;
+        -moz-transition: all .2s linear;
+        -o-transition: all .2s linear;
+        background: #333;
+        color: #fff;
+    }
+
+    i {
+
+    }
+}
+
+#home_link {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 45px;
+	height: 40px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+    font-size: 2em;
+    color: #333;
+    opacity: .5;
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    -o-transition: all .2s linear;
+    background: transparent;
+
+    &:hover {
+        opacity: 1;
+        transition: all .2s linear;
+        -webkit-transition: all .2s linear;
+        -moz-transition: all .2s linear;
+        -o-transition: all .2s linear;
+        color: #fff;
+        background: #333;
+    }
+
+    i {
+        overflow: hidden;
+        border-radius: 10px;
+    }
+}
+
+.add-button {
+	text-align: center;
+    font-size: 2em;
+    width: 42px;
+    height: auto;
+    border: 2px solid #333;
+    border-radius: 50px;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    overflow: hidden;
+    opacity: .5;
+    background: transparent;
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    -o-transition: all .2s linear;
+
+    &:hover {
+        opacity: 1;
+        background: #333;
+        color: #fff;
+        transition: all .2s linear;
+        -webkit-transition: all .2s linear;
+        -moz-transition: all .2s linear;
+        -o-transition: all .2s linear;
+    }
+
+    i {
+        border-radius: 50px;
+        overflow: hidden;
+    }
+}
+
+.btn-box {
+    text-align: center;
+    margin: 15px auto;
+}
+
+.middle-block {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid #ccc;
+}
+.middle-block > div {
+	width: 100%;
+	height: 100%;
+}
+
+.item {
+    .del {
+        position: absolute; 
+        top: 14px; 
+        right: 0px;
+        width: 30px;
+        height: 36px;
+        opacity: 0;
+        font-size: 1.3em;
+        color: #333;
+        transition: all .2s linear;
+        -webkit-transition: all .2s linear;
+        -moz-transition: all .2s linear;
+        -o-transition: all .2s linear;
+    }
+
+    &:hover {
+    	.del {
+	        opacity: 1;
+	        transition: all .2s linear;
+	        -webkit-transition: all .2s linear;
+	        -moz-transition: all .2s linear;
+	        -o-transition: all .2s linear;
+	    }
+    }
+}
+
+
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    bottom: 0;
+    cursor: default;
+    left: 0;
+    opacity: 1;
+    position: fixed;
+    right: 0;
+    top: 0;
+    visibility: visible;
+    z-index: 99999;
+    -webkit-transition: opacity .5s;
+    -moz-transition: opacity .5s;
+    -ms-transition: opacity .5s;
+    -o-transition: opacity .5s;
+    transition: opacity .5s;
+}
+
+.modal-form {
+    display: inline-block;
+    left: 50%;
+    opacity: 1;
+    position: fixed;
+    width: 37% !important;
+    max-height: 500px;
+    margin: 0 auto;
+    padding: 20px 40px;
+    overflow-y: hidden;
+    text-align: justify;
+    top: 45%;
+    visibility: visible;
+    z-index: 999999;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-transition: opacity .5s, top .5s;
+    -moz-transition: opacity .5s, top .5s;
+    -ms-transition: opacity .5s, top .5s;
+    -o-transition: opacity .5s, top .5s;
+    transition: opacity .5s, top .5s;
+    border: 2px solid #000;
+    border-radius: 5px;
+    background-color: #fff;
+
+    form {
+        padding: 20px 0;
+        transform: translateZ(1px) scale(1);
+    }
+
+    .close_modal {
+        position: absolute;
+        padding: 0px 4px 0px 5px;
+        top: 3px;
+        right: 5px;
+        cursor: pointer;
+        color: #fff;
+        font-family: Open Sans, sans-serif;
+        font-size: 1em;
+        background: #000000;
+        text-align: center;
+        border: 2px solid #fff;
+        border-radius: 50%;
+    }
+}
+
+form {
+    .error {color: #f00;}
+    .error input, form .error textarea {border-color: #f00;}
+    .error p {margin: 5px 0 0;}
+}
+
+#pwebkitscroller::-webkit-scrollbar {
+    width: 6px;
+    background-color: transparent;
+}
+#pwebkitscroller::-webkit-scrollbar-thumb {
+    background-color: #333;
+    min-height: 1px;
+    border-radius: 10px;
+}
+#pwebkitscroller::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.subtitle {
+    font-size: 1.5em;
+    color: #333;
+    text-align: center;
+}
+
+.empty-block {
+    text-align: center;
+    font-size: 14px;
+    font-family: 'Verdana', sans-serif;
+    padding: 10px 0;
+}

@@ -5,7 +5,7 @@ class EmpTasksList extends Component {
 	render() {
 		return (
 			<div className="emp-tasks-list">
-				<h2>Задачи</h2>
+				<p className="subtitle">Задачи</p>
 				{this.props.data.length ? this.props.data.map((task, index) => (
 					<Link key={task.id} href={`/tasks#${task.id}`}>
 						<a className="item">
@@ -16,7 +16,7 @@ class EmpTasksList extends Component {
 					</Link>
 				)) : 
 					<div>
-						<h3>Список задач пока пуст</h3>
+						<p className="empty-block">Список задач пока пуст</p>
 					</div>
 				}
 			</div>

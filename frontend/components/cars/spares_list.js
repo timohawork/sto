@@ -22,7 +22,7 @@ class CarSparesList extends Component {
 
 		return (
 			<div className="car-spares-list">
-				<h2>Запчасти</h2>
+				<p className="subtitle">Запчасти</p>
 				{spares.length ? spares.map((spare, index) => (
 					<SpareBlock 
 						key={spare.id} 
@@ -30,7 +30,7 @@ class CarSparesList extends Component {
 					/>
 				)) : 
 					<div>
-						<h3>Список запчастей пока пуст</h3>
+						<p className="empty-block">Список запчастей пока пуст</p>
 					</div>
 				}
 			</div>
